@@ -1,2 +1,2 @@
 # carnetAdresse
-l'application web devep avec spring boot
+carnetAdresse est une application web developpée  avec spring boot
