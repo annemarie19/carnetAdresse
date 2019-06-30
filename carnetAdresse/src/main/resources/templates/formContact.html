@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+       layout:decorator="template1">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Contacts</title>
+    <link rel="stylesheet" type="text/css"
+          href="../static/bootstrap.min.css"
+          th:href="@{/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css"
+          href="../static/myStyle.css"
+          th:href="@{/myStyle.css}"/>
+</head>
+<body>
+
+   <div layout:fragment="content" class="container">
+       <div class="col-md-6 col-sm-6 col-xs-12">
+
+       <div class=" panel panel-primary">
+           <div class="page-heading">Ajout d'un contact</div>
+           <div class="panel-body">
+               <form th:action="@{saveContact}" method="post">
+                     <div class="form-group">
+                         <label class="control-label">Nom:</label>
+                         <input  class="form-control" type="text" name="nom" th:value="${contact.nom}"/>
+                         <span class="text-danger" th:errors="${contact.nom}"></span>
+                     </div>
+                     <div class="form-group">
+                       <label class="control-label">Prenom:</label>
+                       <input  class="form-control" type="text" name="prenom" th:value="${contact.prenom}"/>
+                         <span class="text-danger" th:errors="${contact.prenom}"></span>
+                    </div>
+                    <div class="form-group">
+                       <label class="control-label">Adresssemail:</label>
+                       <input  class="form-control" type="text" name="adressemail" th:value="${contact.adressemail}"/>
+                        <span class="text-danger" th:errors="${contact.adressemail}"></span>
+                    </div>
+                   <div class="form-group">
+                       <label class="control-label">Adresssepostal:</label>
+                       <input  class="form-control" type="text" name="adressepostal" th:value="${contact.adressepostal}"/>
+                       <span class="text-danger" th:errors="${contact.adressepostal}"></span>
+                   </div>
+                   <div class="form-group">
+                       <label class="control-label">Codepostal:</label>
+                       <input  class="form-control" type="text" name="codepostal" th:value="${contact.codepostal}"/>
+                       <span class="text-danger" th:errors="${contact.codepostal}"></span>
+                   </div>
+                   <div class="form-group">
+                       <label class="control-label">Ville:</label>
+                       <input  class="form-control" type="text" name="ville" th:value="${contact.ville}"/>
+                       <span class="text-danger" th:errors="${contact.ville}"></span>
+                   </div>
+                   <div class="form-group">
+                       <label class="control-label">Telephone:</label>
+                       <input  class="form-control" type="text" name="telephone" th:value="${contact.telephone}"/>
+                       <span class="text-danger" th:errors="${contact.telephone}"></span>
+                   </div>
+                   <button class="btn btn-primary">Enregistrer</button>
+               </form>
+         </div>
+       </div>
+    </div>
+  </div>
+</body>
+</html>

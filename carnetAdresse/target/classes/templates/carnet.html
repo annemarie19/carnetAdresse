@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html   xmlns:th="http://www.thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorator="template1">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Contacts</title>
+    <link rel="stylesheet" type="text/css"
+          href="../static/bootstrap.min.css"
+          th:href="@{/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css"
+          href="../static/myStyle.css"
+          th:href="@{/myStyle.css}"/>
+</head>
+<body>
+   <div layout:fragment="content" class="container">
+
+       <div class="panel panel-primary">
+           <div class="panel-heading space50"> CARNET D'ADRESSES</div>
+           <div class="panel-body">
+
+               <div class="container">
+                   <form th:action="@{/index} " method="get ">
+                       <label>Mot recherché</label>
+                       <input type="text" name="motChercche"/>
+                       <button type="submit" class="btn btn-primary">chercher</button>
+                   </form>
+
+               </div>
+
+             <table class="table table-striped" >
+               <tr>
+                   <th>ID</th><th>Nom</th><th>Prenom</th><th>Adressemail</th><th>Adressepostal</th>
+                   <th>Codepostal</th><th>Ville</th><th>Telephone</th><th>Delete</th><th>Update</th>
+               </tr>
+               <tr th:each="c:${listContacts}">
+                   <td th:text="${c.id}"></td>
+                   <td th:text="${c.nom}"></td>
+                   <td th:text="${c.prenom}"></td>
+                   <td th:text="${c.adressemail}"></td>
+                   <td th:text="${c.adressepostal}"></td>
+                   <td th:text="${c.codepostal}"></td>
+                   <td th:text="${c.ville}"></td>
+                   <td th:text="${c.telephone}"></td>
+                   <td ><a th:href="@{/deleteContact(id=${c.id})}" class="btn btn-danger">Supprimer</a></td>
+                   <td ><a th:href="@{/updateContact(id=${c.id})}" class="btn btn-primary">Editer</a></td>
+               </tr>
+             </table>
+         </div>
+       </div>
+   </div>
+</body>
+</html>
